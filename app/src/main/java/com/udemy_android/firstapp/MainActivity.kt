@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Row
 // 그전에는 XML방식으로 인터페이스를 개발했는데, 선생님은 개인적으로 이 방식이 더 좋았다고 한다..ㅋㅋㅋ
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,7 +42,6 @@ class MainActivity : ComponentActivity() { // 앱의 시작점. 항상. Starting
                     modifier = Modifier.fillMaxSize(), // Surface가 전체화면을 차지하도록 한다.
                     color = MaterialTheme.colorScheme.background
                 ) {
-//                    Greeting("Udemy android course!")
                     UnitConverter()
                 }
 
@@ -54,14 +54,11 @@ class MainActivity : ComponentActivity() { // 앱의 시작점. 항상. Starting
 fun UnitConverter() {
     // SwiftUI의 VStack과 같은 역할을 함
     Column {
-        Greeting("Udemy android course1!")
-        Greeting("Udemy android course2!")
-
-        // SwiftUI의 HStack과 같은 역할을 함
-        Row {
-            Greeting("row1")
-            Greeting("row2")
-        }
+       Text("Unit Converter")
+        OutlinedTextField(value = "", onValueChange = {
+            // 익명함수임.
+            // 함수를 받도록 되어있음. 유저가 값을 입력해서 input이 변경되는 경우
+        })
     }
 }
 
@@ -69,11 +66,11 @@ fun UnitConverter() {
 // Composable is basically an element you can see on the screen
 // 다른 Composable을 포함하거나, 아니면 실제로 표시되는 요소 그 자체이다.
 // 아래 Composable은 다른 Composable인 Text를 담고 있는 Composable이다.
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    // Text Composable을 표시한다.
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    // Text Composable을 표시한다.
+//    Text(
+//        text = "Hello $name!",
+//        modifier = modifier
+//    )
+//}
