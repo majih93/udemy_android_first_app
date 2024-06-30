@@ -6,6 +6,8 @@ package com.udemy_android.firstapp // name of the app package,
 import android.os.Bundle
 import androidx.activity.ComponentActivity // MainActivity의 type인 ComponentActivity가 어떻게 구성되고 처리되어야하는지가 여기에 정의되어 있음. 이걸 가져와야 한다.
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 
 // 현재는 아래의 compose(Jetpack Compose)가 구글에서 미는 안드로이드 앱 만드는 방법이다.
 // 그전에는 XML방식으로 인터페이스를 개발했는데, 선생님은 개인적으로 이 방식이 더 좋았다고 한다..ㅋㅋㅋ
@@ -39,12 +41,30 @@ class MainActivity : ComponentActivity() { // 앱의 시작점. 항상. Starting
                     modifier = Modifier.fillMaxSize(), // Surface가 전체화면을 차지하도록 한다.
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+//                    Greeting("Udemy android course!")
+                    UnitConverter()
                 }
+
             }
         }
     }
 }
+
+@Composable
+fun UnitConverter() {
+    // SwiftUI의 VStack과 같은 역할을 함
+    Column {
+        Greeting("Udemy android course1!")
+        Greeting("Udemy android course2!")
+
+        // SwiftUI의 HStack과 같은 역할을 함
+        Row {
+            Greeting("row1")
+            Greeting("row2")
+        }
+    }
+}
+
 
 // Composable is basically an element you can see on the screen
 // 다른 Composable을 포함하거나, 아니면 실제로 표시되는 요소 그 자체이다.
@@ -56,12 +76,4 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    UdemyAndroidFirstAppTheme {
-        Greeting("Android")
-    }
 }
