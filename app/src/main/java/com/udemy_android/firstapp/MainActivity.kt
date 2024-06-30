@@ -16,9 +16,12 @@ import androidx.compose.foundation.layout.Spacer
 // 그전에는 XML방식으로 인터페이스를 개발했는데, 선생님은 개인적으로 이 방식이 더 좋았다고 한다..ㅋㅋㅋ
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -82,16 +85,44 @@ fun UnitConverter() {
 
        Row {
            Box {
-                Button(onClick = { /*TODO*/ }) {
-                    Text("Select")
-                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down") // contentDescription은 disability기능이다. 아이콘이 뭘 하는지 읽어줄 수 있게 기능 제공
-                }
+               Button(onClick = { /*TODO*/ }) {
+                   Text("Select")
+                   Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down") // contentDescription은 disability기능이다. 아이콘이 뭘 하는지 읽어줄 수 있게 기능 제공
+               }
+
+               DropdownMenu(expanded = false, onDismissRequest = {
+                   // dismiss되었을 때 호출될 callback함수
+               }) {
+                   DropdownMenuItem(
+                       text = { Text("Centimeters") }, // text parameter의 스펙을 보면 String값이 아니라 Composable을 입력받도록 되어있음.
+                       onClick = {}
+                   )
+                   DropdownMenuItem(text = { Text("Meters") }, onClick = {})
+                   DropdownMenuItem(text = { Text("Feet") }, onClick = {})
+                   DropdownMenuItem(text = { Text("Millimeters") }, onClick = {})
+               }
            }
+
+           // 통상적으로 안드에서는 8, 16, 32등의 spacing을 많이 사용한다.(Default라고 언급함.)
+           // 보통 앱들이 가장자리에 약간 공간을 두는데, 이게 보통 8.dp라고한다.
+           Spacer(modifier = Modifier.width(16.dp))
 
            Box {
                Button(onClick = { /*TODO*/ }) {
                    Text("Select")
                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down") // contentDescription은 disability기능이다. 아이콘이 뭘 하는지 읽어줄 수 있게 기능 제공
+               }
+
+               DropdownMenu(expanded = false, onDismissRequest = {
+                   // dismiss되었을 때 호출될 callback함수
+               }) {
+                   DropdownMenuItem(
+                       text = { Text("Centimeters") }, // text parameter의 스펙을 보면 String값이 아니라 Composable을 입력받도록 되어있음.
+                       onClick = {}
+                   )
+                   DropdownMenuItem(text = { Text("Meters") }, onClick = {})
+                   DropdownMenuItem(text = { Text("Feet") }, onClick = {})
+                   DropdownMenuItem(text = { Text("Millimeters") }, onClick = {})
                }
            }
        }
