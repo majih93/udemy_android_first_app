@@ -4,24 +4,25 @@ package com.udemy_android.firstapp // name of the app package,
 // 라이브러리를 불러와서 사용하는 것.
 // 라이브러리란? 미리 구성된 일련의 코드를 담고 있음. 가져다가 사용할 수 있다.
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity // MainActivity의 type인 ComponentActivity가 어떻게 구성되고 처리되어야하는지가 여기에 정의되어 있음. 이걸 가져와야 한다.
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 
 // 현재는 아래의 compose(Jetpack Compose)가 구글에서 미는 안드로이드 앱 만드는 방법이다.
 // 그전에는 XML방식으로 인터페이스를 개발했는데, 선생님은 개인적으로 이 방식이 더 좋았다고 한다..ㅋㅋㅋ
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 
 // 아래 Theme은 ui.theme 폴더 내의 스타일링 관련 파일에 내가 정의한 내용을 가져오는 부분이다.
 import com.udemy_android.firstapp.ui.theme.UdemyAndroidFirstAppTheme
@@ -64,10 +65,23 @@ fun UnitConverter() {
        })
 
        Row {
-           val context = LocalContext.current
-           Button(onClick = { Toast.makeText(context, "버튼 눌렀구나?", Toast.LENGTH_LONG).show() }) {
-               Text("click me!!")
+           Box {
+                Button(onClick = { /*TODO*/ }) {
+                    Text("Select")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down") // contentDescription은 disability기능이다. 아이콘이 뭘 하는지 읽어줄 수 있게 기능 제공
+                }
            }
+
+           Box {
+               Button(onClick = { /*TODO*/ }) {
+                   Text("Select")
+                   Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down") // contentDescription은 disability기능이다. 아이콘이 뭘 하는지 읽어줄 수 있게 기능 제공
+               }
+           }
+
+//           Button(onClick = {}) {
+//               Text("click me!!")
+//           }
        }
     }
 }
