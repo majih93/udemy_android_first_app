@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 
 // 현재는 아래의 compose(Jetpack Compose)가 구글에서 미는 안드로이드 앱 만드는 방법이다.
 // 그전에는 XML방식으로 인터페이스를 개발했는데, 선생님은 개인적으로 이 방식이 더 좋았다고 한다..ㅋㅋㅋ
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -25,6 +27,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 // 아래 Theme은 ui.theme 폴더 내의 스타일링 관련 파일에 내가 정의한 내용을 가져오는 부분이다.
 import com.udemy_android.firstapp.ui.theme.UdemyAndroidFirstAppTheme
@@ -66,10 +69,16 @@ fun UnitConverter() {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
        Text("Unit Converter")
+       Spacer(modifier = Modifier.height(16.dp)) // dp는 절대값이 아니라 상대값, 해상도에 따라서 차지하는 영역 비율이 유지되도록 해준다.
        OutlinedTextField(value = "", onValueChange = {
             // 익명함수임.
             // 함수를 받도록 되어있음. 유저가 값을 입력해서 input이 변경되는 경우
        })
+       Spacer(modifier = Modifier.height(16.dp))
+
+       // Jetpack Compose에서 요소 간 간격을 조절하는 방법은 2가지 - padding modifier, Spacer element.
+       // Padding -> 단일 요소의 주변 요소들과의 간격을 조절할 때 사용하기 좋음, 심플함
+       // Spacer -> 여러 요소들이 동일한 간격을 두고 렌더링되도록 할 때 좋음, 약간 더 복잡하지만 재사용성이나 디자인 의도를 반영하기에 더 좋음.
 
        Row {
            Box {
@@ -86,6 +95,8 @@ fun UnitConverter() {
                }
            }
        }
+       Spacer(modifier = Modifier.height(16.dp))
+       Text("Result:")
     }
 }
 
