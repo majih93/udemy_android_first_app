@@ -6,6 +6,7 @@ package com.udemy_android.firstapp // name of the app package,
 import android.os.Bundle
 import androidx.activity.ComponentActivity // MainActivity의 type인 ComponentActivity가 어떻게 구성되고 처리되어야하는지가 여기에 정의되어 있음. 이걸 가져와야 한다.
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,7 +31,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.TextViewCompat
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 
 // 아래 Theme은 ui.theme 폴더 내의 스타일링 관련 파일에 내가 정의한 내용을 가져오는 부분이다.
 import com.udemy_android.firstapp.ui.theme.UdemyAndroidFirstAppTheme
@@ -40,6 +47,13 @@ import com.udemy_android.firstapp.ui.theme.UdemyAndroidFirstAppTheme
 // 이 MainActivity라는 클래스는 ComponentActivity처럼 행동해야 한다. 라는 뜻이다.
 // 근데 Activity가 뭔데? 간단하게 말해서 폰 화면에 보이는 그 모든 것이라고 보면 됨. 화면을 보고 있으면 하나의 Activity를 보고 있는 것.
 // 통상적으로 하나의 화면에서 다른 화면으로 이동하면, 하나의 Activity에서 다른 Activity로 이동한다.
+
+object AppCustomFont {
+    val NotoKR = FontFamily(
+        Font(R.font.notosanskr)
+    )
+}
+
 class MainActivity : ComponentActivity() { // 앱의 시작점. 항상. Starting Point.
     // 이 override가 뭐야?
     override fun onCreate(savedInstanceState: Bundle?) { // MainActivity가 새롭게 init될 때 항상 블록 안의 코드를 실행하라는 의미.
@@ -54,13 +68,17 @@ class MainActivity : ComponentActivity() { // 앱의 시작점. 항상. Starting
                     modifier = Modifier.fillMaxSize(), // Surface가 전체화면을 차지하도록 한다.
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    UnitConverter()
+//                    UnitConverter()
+                    MyComposable()
                 }
+
 
             }
         }
     }
 }
+
+
 
 @Composable
 fun UnitConverter() {
@@ -128,6 +146,34 @@ fun UnitConverter() {
        }
        Spacer(modifier = Modifier.height(16.dp))
        Text("Result:")
+    }
+}
+
+@Composable
+fun MyComposable() {
+    Row(
+        modifier = Modifier.fillMaxSize(0.3f),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Box(
+            modifier = Modifier
+//                .background(Color.Coral)
+//                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .weight(1f)
+        )
+
+        Spacer(modifier = Modifier)
+
+        Box(
+            modifier = Modifier
+//                .background(Color.Teal)
+//                .padding(horizontal = 16.dp)
+        ) {
+            Text(
+                text = "hello",
+                fontWeight = FontWeight.Medium
+            )
+        }
     }
 }
 
